@@ -45,28 +45,6 @@ Marisa=/data/adb/modules/Marisa
 rm -rf $Marisa
 
 case "$ZIPFILE" in
-  *LOSFOD*)
-    ui_print "  • LOSFOD Detected";
-    ;;
-  *MIUI*)
-    ui_print "  • Disabling the FOD Dimlayer";
-    MarisaMagisk=/data/adb/modules/FDD
-    rm -rf $MarisaMagisk
-    mkdir -p $MarisaMagisk
-    cp -Rf /tmp/anykernel/fod_dimlayer_disabler/* $MarisaMagisk
-    chmod 755 $MarisaMagisk/system.prop
-    ;;
-  *)
-    ui_print "  • Disabling the FOD Dimlayer";
-    MarisaMagisk=/data/adb/modules/FDD
-    rm -rf $MarisaMagisk
-    mkdir -p $MarisaMagisk
-    cp -Rf /tmp/anykernel/fod_dimlayer_disabler/* $MarisaMagisk
-    chmod 755 $MarisaMagisk/system.prop
-    ;;
-esac
-
-case "$ZIPFILE" in
   *66fps*|*66hz*)
     ui_print "  • Setting 66 Hz refresh rate"
     patch_cmdline "msm_drm.framerate_override" "msm_drm.framerate_override=1"
@@ -82,6 +60,22 @@ case "$ZIPFILE" in
   *75fps*|*75hz*)
     ui_print "  • Setting 75 Hz refresh rate"
     patch_cmdline "msm_drm.framerate_override" "msm_drm.framerate_override=4"
+    ;;
+  *78fps*|*78hz*)
+    ui_print "  • Setting 78 Hz refresh rate"
+    patch_cmdline "msm_drm.framerate_override" "msm_drm.framerate_override=5"
+    ;;
+  *81fps*|*81hz*)
+    ui_print "  • Setting 81 Hz refresh rate"
+    patch_cmdline "msm_drm.framerate_override" "msm_drm.framerate_override=6"
+    ;;
+  *84fps*|*84hz*)
+    ui_print "  • Setting 84 Hz refresh rate"
+    patch_cmdline "msm_drm.framerate_override" "msm_drm.framerate_override=7"
+    ;;
+  *90fps*|*90hz*)
+    ui_print "  • Setting 90 Hz refresh rate"
+    patch_cmdline "msm_drm.framerate_override" "msm_drm.framerate_override=8"
     ;;
   *)
     patch_cmdline "msm_drm.framerate_override" ""
